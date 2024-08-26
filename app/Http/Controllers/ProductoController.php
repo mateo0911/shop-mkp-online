@@ -23,6 +23,11 @@ class ProductoController extends Controller
         $idProducto = $infoProducto["idProducto"];
 
         $listaLinks = $svcProductos->getLinksMarketByProduct($idProducto);
+
+        $this->responderSinError();
+        $this->setData($listaLinks, "linksMkp");
+
+        return $this->devolverRespuesta();
     }
 }
 

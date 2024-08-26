@@ -21,6 +21,7 @@ class MarketPlaceIntermedioProducto extends Model
         "id_producto",
         "link_mkp",
         "nombre_market",
+        "precio_producto_market",
         "estado"
     ];
 }

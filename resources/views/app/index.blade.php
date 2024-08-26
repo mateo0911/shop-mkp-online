@@ -137,12 +137,10 @@
                             <div class="card-body">
                                 <h5 class="card-title">{{$producto["nombre_producto"]}}</h5>
                                 <p class="card-text">{{$producto["descripcion"]}}</p>
-                                <p class="card-text"><strong class="text-primary">{{$producto["precio"]}}</strong></p>
                             </div>
                             <div class="card-footer bg-white border-top-0">
                                 <a href="#" class="btn btn-primary btn-sm"><i class="fas fa-info-circle me-1"></i>Ver detalles</a>
-                                <button type="button" class="btn btn-success btn-sm " style="text-transform: uppercase;"><i class="fas fa-cart-plus me-1"></i>Comprar</button>
-                                <a href="#" class="btn btn-success btn-sm botonModalProducto" data-codigo="{{$producto["id_producto"]}}" style="text-transform: uppercase"><i class="fas fa-cart-plus me-1"></i>Comprar</a>
+                                <a href="#" class="btn btn-success btn-sm botonModalProducto" data-codigo="{{$producto["id_producto"]}}" style="text-transform: uppercase"><i class="fas fa-cart-plus me-1"></i>Ver Precios</a>
                             </div>
                         </div>
                     </div>
@@ -172,18 +170,12 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal con Botones</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Market Place Relacionados</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p class="text-center mb-4">Selecciona una opción:</p>
-                <div class="d-flex justify-content-center flex-wrap gap-2">
-                    <button type="button" class="btn btn-primary">Opción 1</button>
-                    <button type="button" class="btn btn-success">Opción 2</button>
-                    <button type="button" class="btn btn-info">Opción 3</button>
-                    <button type="button" class="btn btn-warning">Opción 4</button>
-                    <button type="button" class="btn btn-danger">Opción 5</button>
-                </div>
+                <p class="text-center mb-4">Selecciona Un Market Place de Tu Gusto:</p>
+                <div class="d-flex justify-content-center flex-wrap gap-2" id="divMercadosEncontrados"></div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -230,12 +222,18 @@
         let idProducto = jQuery(this).data("codigo");
         axios.post("getLinkMarket",
             {
-                "idProducto" : idProducto
+                "idProducto": idProducto
             }
         ).then(function (resp) {
-
+            jQuery.each(resp.data.data.linksMkp, function (index, valor) {
+                jQuery("#divMercadosEncontrados").append(`
+                <div>
+                   <h5 style="font-size: 17px; display: flex; justify-content: center">${valor.precio_producto_market}</h5>
+                   <a href="${valor.link_mkp}" target="_blank" class="btn btn-primary" style="text-transform: uppercase">${valor.nombre_market}</a>
+                </div>`)
+            });
+            jQuery("#modalMKP").modal("show");
         });
-        jQuery("#modalMKP").modal("show");
     });
 </script>
 </body>

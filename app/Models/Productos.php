@@ -21,8 +21,6 @@ class Productos extends Model
         "sku",
         "nombre_producto",
         "descripcion",
-        "precio",
-        "precio_oferta",
         "categoria",
         "imagen_producto",
         "estado"

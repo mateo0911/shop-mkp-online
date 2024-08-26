@@ -16,6 +16,7 @@ return new class extends Migration
             , `id_producto` INT(11) NULL
             , `link_mkp` VARCHAR(1000) NOT NULL
             , `nombre_market` VARCHAR(100) NOT NULL
+            , `precio_producto_market` DOUBLE (12,2) NOT NULL
             , `estado` VARCHAR(1) NOT NULL
             , PRIMARY KEY (`id_mkp_intermedio_producto`)) ENGINE = InnoDB;");
 

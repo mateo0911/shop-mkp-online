@@ -17,14 +17,12 @@ class SvcProductos
                 "p.sku",
                 "p.nombre_producto",
                 "p.descripcion",
-                "p.precio",
-                "p.precio_oferta",
                 "p.categoria",
                 "p.imagen_producto",
                 "p.estado",
-                "id_mkp_intermedio_producto",
-                "link_mkp",
-                "nombre_market"
+                "mip.id_mkp_intermedio_producto",
+                "mip.link_mkp",
+                "mip.nombre_market"
             )
                 ->from("productos AS p")
                 ->join("marketplace_intermedio_producto AS mip", "p.id_producto", "=", "mip.id_producto")
@@ -45,6 +43,7 @@ class SvcProductos
                 "id_producto",
                 "link_mkp",
                 "nombre_market",
+                "precio_producto_market",
                 "estado"
             )
                 ->where("id_producto", $id)
