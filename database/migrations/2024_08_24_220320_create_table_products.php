@@ -81,13 +81,13 @@ return new class extends Migration
      */
     public function down(): void
     {
-        \DB::unprepared("DROP TABLE productos");
         \DB::unprepared("DROP TABLE categoria");
-        \DB::unprepared("DROP TABLE atributos");
         \DB::unprepared("DROP TABLE productos_intermedio_atributos");
-        \DB::unprepared("DROP TABLE marcas");
         \DB::unprepared("DROP TABLE proveedores");
         \DB::unprepared("DROP TABLE inventario");
         \DB::unprepared("DROP TABLE producto_imagen");
+        \DB::unprepared("DROP TABLE productos");
+        \DB::unprepared("DROP TABLE atributos");
+        \DB::unprepared("DROP TABLE marcas");
     }
 };
