@@ -68,6 +68,16 @@ return new class extends Migration
             , `imagen_producto` VARCHAR(1000) NOT NULL
             , PRIMARY KEY (`id_producto_imagen`)) ENGINE = InnoDB;");
 
+        \DB::unprepared("CREATE TABLE `usuarios`
+            (`id_usuario` INT NOT NULL AUTO_INCREMENT
+            , `usuario` VARCHAR(200) NOT NULL
+            , `nombre` VARCHAR(200) NOT NULL
+            , `documento` VARCHAR(30) NOT NULL
+            , `clave` VARCHAR(300) NOT NULL
+            , `email` VARCHAR(100) NOT NULL
+            , `estado` VARCHAR(1) NOT NULL
+            , PRIMARY KEY (`id_usuario`)) ENGINE = InnoDB;");
+
         \DB::unprepared("ALTER TABLE productos_intermedio_atributos ADD FOREIGN KEY (id_producto) REFERENCES productos(id_producto)");
         \DB::unprepared("ALTER TABLE productos_intermedio_atributos ADD FOREIGN KEY (id_atributo) REFERENCES atributos(id_atributo)");
         \DB::unprepared("ALTER TABLE productos ADD FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria)");

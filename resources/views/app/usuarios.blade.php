@@ -36,14 +36,14 @@
 <script>
     jQuery("#guardar_usuario").on("click", () => {
         axios.post("usuario/guardar", {
-            "usuario_nick" : jQuery("#usuario_nick").val(),
-            "nombre_usuario" : jQuery("#usuario_nombre").val(),
-            "documento" : jQuery("#num_doc").val(),
-            "clave" : jQuery("#clave").val(),
-            "email" : jQuery("#email").val(),
-            "estado" : jQuery("#estado").val()
+            "usuario_nick": jQuery("#usuario_nick").val(),
+            "nombre_usuario": jQuery("#usuario_nombre").val(),
+            "documento": jQuery("#num_doc").val(),
+            "clave": jQuery("#clave").val(),
+            "email": jQuery("#email").val(),
+            "estado": jQuery("#estado").val()
         }).then(function (resp) {
-
+            console.log(resp);
         })
     });
 </script>
