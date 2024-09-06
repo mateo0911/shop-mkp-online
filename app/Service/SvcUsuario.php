@@ -19,7 +19,7 @@ class SvcUsuario
         }
     }
 
-    function validarUsuario($usuario, $clave)
+    function getUsuarioByEmail($email)
     {
         try {
             $usuarioEncontrado = Usuario::select(
@@ -30,8 +30,7 @@ class SvcUsuario
                 "clave",
                 "email",
             )
-                ->where("usuario", $usuario)
-                ->where("clave", $clave)
+                ->where("email", $email)
                 ->where("estado", 1)
                 ->get()
                 ->first();
