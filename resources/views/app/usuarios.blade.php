@@ -43,7 +43,11 @@
             "email": jQuery("#email").val(),
             "estado": jQuery("#estado").val()
         }).then(function (resp) {
-            console.log(resp);
+            if (resp.data.error == "0") {
+                alert("Usuario Registrado con exito")
+            } else {
+                alert(resp.data.mensaje);
+            }
         })
     });
 </script>
