@@ -44,4 +44,25 @@ class UsuarioController extends Controller
 
         return $this->devolverRespuesta();
     }
+
+    function modificarUsuario(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            "usuario_nick"   => "required",
+            "nombre_usuario" => "required",
+            "documento"   => "required",
+            "email"   => "required",
+        ]);
+
+        if ($validator->fails()) {
+            $this->agregarError($validator->errors()->jsonSerialize());
+        } else {
+            $datosFormulario = $request->all();
+
+            if (!empty($datosFormulario["clave"])) {
+                $claveNueva = Hash::make($datosFormulario["clave"]);
+                $datosRegistrar["clave"] = $claveNueva;
+            }
+        }
+    }
 }

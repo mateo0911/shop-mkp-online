@@ -29,7 +29,7 @@ class AutenticacionController extends Controller
                     session(["usuario" => $usuarioEncontrado["usuario"]]);
                     session(["nombre_usuario" => $usuarioEncontrado["nombre"]]);
                     session(["email" => $usuarioEncontrado["email"]]);
-                    session(["enable_session" => true]);
+                    session(['app_sesion' => 'xLXAiX0fFTjLKEiJam7X57']);
                     $this->responderSinError();
                 } else {
                     $this->agregarError("Usuario o clave equivocadas");

@@ -14,7 +14,7 @@
     <input type="password" name="clave" id="clave">
     <button type="button" id="iniciar_sesion">Iniciar</button>
 </form>
-
+<h1>{{session("nombre_usuario")}}</h1>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
@@ -28,7 +28,7 @@
             "clave" : jQuery("#clave").val()
         }).then((resp) => {
             if (resp.data.error == "0") {
-                {{--window.location.href = "{{URL::asset("")}}";--}}
+                window.location.href = "{{URL::asset("usuario/")}}";
                 alert("inicio correcto");
             } else {
                 alert(resp.data.mensaje);

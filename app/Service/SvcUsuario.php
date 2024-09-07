@@ -40,6 +40,38 @@ class SvcUsuario
             Log::channel("database")->info($e);
             return [];
         }
+    }
 
+    function getUsuarioById($id)
+    {
+        try {
+            $usuarioEncontrado = Usuario::select(
+                "id_usuario",
+                "usuario",
+                "nombre",
+                "documento",
+                "clave",
+                "email",
+            )
+                ->where("id_usuario", $id)
+                ->get()
+                ->first();
+
+            return $usuarioEncontrado?->toArray() ?? [];
+        } catch (Exception $e) {
+            Log::channel("database")->info($e);
+            return [];
+        }
+    }
+
+    function getListaUsuarios()
+    {
+        try {
+            $listaUsuario = Usuario::all();
+            return $listaUsuario;
+        } catch (Exception $e) {
+            Log::channel("database")->info($e);
+            return [];
+        }
     }
 }
